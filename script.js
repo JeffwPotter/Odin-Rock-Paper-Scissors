@@ -5,37 +5,48 @@ const handArray = [
     "scissors"
 ];
 
+//Function for computer to randomly choose rock, paper, or scissors
 function computerPlay() {
-    computerSelection = handArray[Math.floor(Math.random() * handArray.length)];
-    return computerSelection;
+    const randomComputerSelection = handArray[Math.floor(Math.random() * handArray.length)];
+    return randomComputerSelection;
 }
+const computerSelection = computerPlay();
 
-function playerSelection() {
-    const playerPick = function () {
-        return prompt("Please choose rock, paper, or scissors: ");
-        return playerPick;
-    }
-}
-// COMMENTED OUT INCASE I NEED IT LATER    let playerPick = prompt("Please choose rock, paper, or scissors: ");
+// Test computerPlay function
+console.log("Computer picks " + computerSelection);
 
-function playRound (playerPick, computerSelection) {
-    if (playerPick == "rock" && computerSelection == "paper") {
+
+let playerSelection = prompt("Please choose rock, paper, or scissors: ");
+
+//This sets a baseline score for the player and computer
+let playerScore = 0;
+let computerScore = 0;
+
+//Function to evaluate possible moves and keep score.
+function playRound (playerSelection, computerSelection) {
+    if (playerSelection == "rock" && computerSelection == "paper") {
         console.log("Paper Wins!");
+        computerScore += 1;
     }
-    else if (playerPick == "rock" && computerSelection == "scissors") {
+    else if (playerSelection == "rock" && computerSelection == "scissors") {
         console.log("Rock Wins!");
+        playerScore += 1;
     }
-    else if (playerPick == "paper" && computerSelection == "scissors") {
+    else if (playerSelection == "paper" && computerSelection == "scissors") {
         console.log("Scissors Wins!");
+        computerScore += 1;
     }
-    else if (playerPick == "paper" && computerSelection == "rock") {
+    else if (playerSelection == "paper" && computerSelection == "rock") {
         console.log("Paper Wins!");
+        playerScore += 1;
     }
-    else if (playerPick == "scissors" && computerSelection == "rock") {
+    else if (playerSelection == "scissors" && computerSelection == "rock") {
         console.log("Rock Wins!");
+        computerScore += 1;
     }
-    else if (playerPick == "scissors" && computerSelection == "paper") {
+    else if (playerSelection == "scissors" && computerSelection == "paper") {
         console.log("Scissors Wins!");
+        playerScore += 1;
     }
     else  {
         console.log("DRAW!");
@@ -43,10 +54,14 @@ function playRound (playerPick, computerSelection) {
 
 } 
 
-function game() {
-    playRound();
-}
+//Log results of play
+console.log(playRound(playerSelection, computerSelection));
 
-for (let i = 0; i < 5; i++) {
-    game();
-}
+ function game() {
+     for (let i = 0; i < 5; i++) {
+         if (i < 5) {
+             playRound(playerSelection, computerSelection);
+         }
+
+     }
+ }
